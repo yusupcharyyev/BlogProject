@@ -1,0 +1,16 @@
+C:\Users\yuska\Desktop\BlogProject_5175_06062022\BlogProject_5175_06062022.DAL\bin\Debug\netcoreapp3.1\BlogProject_5175_06062022.DAL.deps.json
+C:\Users\yuska\Desktop\BlogProject_5175_06062022\BlogProject_5175_06062022.DAL\bin\Debug\netcoreapp3.1\BlogProject_5175_06062022.DAL.runtimeconfig.json
+C:\Users\yuska\Desktop\BlogProject_5175_06062022\BlogProject_5175_06062022.DAL\bin\Debug\netcoreapp3.1\BlogProject_5175_06062022.DAL.runtimeconfig.dev.json
+C:\Users\yuska\Desktop\BlogProject_5175_06062022\BlogProject_5175_06062022.DAL\bin\Debug\netcoreapp3.1\BlogProject_5175_06062022.DAL.dll
+C:\Users\yuska\Desktop\BlogProject_5175_06062022\BlogProject_5175_06062022.DAL\bin\Debug\netcoreapp3.1\BlogProject_5175_06062022.DAL.pdb
+C:\Users\yuska\Desktop\BlogProject_5175_06062022\BlogProject_5175_06062022.DAL\bin\Debug\netcoreapp3.1\BlogProject_5175_06062022.Models.dll
+C:\Users\yuska\Desktop\BlogProject_5175_06062022\BlogProject_5175_06062022.DAL\bin\Debug\netcoreapp3.1\BlogProject_5175_06062022.Models.pdb
+C:\Users\yuska\Desktop\BlogProject_5175_06062022\BlogProject_5175_06062022.DAL\obj\Debug\netcoreapp3.1\BlogProject_5175_06062022.DAL.csproj.AssemblyReference.cache
+C:\Users\yuska\Desktop\BlogProject_5175_06062022\BlogProject_5175_06062022.DAL\obj\Debug\netcoreapp3.1\BlogProject_5175_06062022.DAL.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\yuska\Desktop\BlogProject_5175_06062022\BlogProject_5175_06062022.DAL\obj\Debug\netcoreapp3.1\BlogProject_5175_06062022.DAL.AssemblyInfoInputs.cache
+C:\Users\yuska\Desktop\BlogProject_5175_06062022\BlogProject_5175_06062022.DAL\obj\Debug\netcoreapp3.1\BlogProject_5175_06062022.DAL.AssemblyInfo.cs
+C:\Users\yuska\Desktop\BlogProject_5175_06062022\BlogProject_5175_06062022.DAL\obj\Debug\netcoreapp3.1\BlogProject_5175_06062022.DAL.csproj.CoreCompileInputs.cache
+C:\Users\yuska\Desktop\BlogProject_5175_06062022\BlogProject_5175_06062022.DAL\obj\Debug\netcoreapp3.1\BlogProject_5175_06062022.DAL.csproj.CopyComplete
+C:\Users\yuska\Desktop\BlogProject_5175_06062022\BlogProject_5175_06062022.DAL\obj\Debug\netcoreapp3.1\BlogProject_5175_06062022.DAL.dll
+C:\Users\yuska\Desktop\BlogProject_5175_06062022\BlogProject_5175_06062022.DAL\obj\Debug\netcoreapp3.1\BlogProject_5175_06062022.DAL.pdb
+C:\Users\yuska\Desktop\BlogProject_5175_06062022\BlogProject_5175_06062022.DAL\obj\Debug\netcoreapp3.1\BlogProject_5175_06062022.DAL.genruntimeconfig.cache

@@ -1,0 +1,10 @@
+C:\Users\yuska\Desktop\BlogProject_5175_06062022\BlogProject_5175_06062022.Models\bin\Debug\netcoreapp3.1\BlogProject_5175_06062022.Models.deps.json
+C:\Users\yuska\Desktop\BlogProject_5175_06062022\BlogProject_5175_06062022.Models\bin\Debug\netcoreapp3.1\BlogProject_5175_06062022.Models.dll
+C:\Users\yuska\Desktop\BlogProject_5175_06062022\BlogProject_5175_06062022.Models\bin\Debug\netcoreapp3.1\BlogProject_5175_06062022.Models.pdb
+C:\Users\yuska\Desktop\BlogProject_5175_06062022\BlogProject_5175_06062022.Models\obj\Debug\netcoreapp3.1\BlogProject_5175_06062022.Models.csproj.AssemblyReference.cache
+C:\Users\yuska\Desktop\BlogProject_5175_06062022\BlogProject_5175_06062022.Models\obj\Debug\netcoreapp3.1\BlogProject_5175_06062022.Models.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\yuska\Desktop\BlogProject_5175_06062022\BlogProject_5175_06062022.Models\obj\Debug\netcoreapp3.1\BlogProject_5175_06062022.Models.AssemblyInfoInputs.cache
+C:\Users\yuska\Desktop\BlogProject_5175_06062022\BlogProject_5175_06062022.Models\obj\Debug\netcoreapp3.1\BlogProject_5175_06062022.Models.AssemblyInfo.cs
+C:\Users\yuska\Desktop\BlogProject_5175_06062022\BlogProject_5175_06062022.Models\obj\Debug\netcoreapp3.1\BlogProject_5175_06062022.Models.csproj.CoreCompileInputs.cache
+C:\Users\yuska\Desktop\BlogProject_5175_06062022\BlogProject_5175_06062022.Models\obj\Debug\netcoreapp3.1\BlogProject_5175_06062022.Models.dll
+C:\Users\yuska\Desktop\BlogProject_5175_06062022\BlogProject_5175_06062022.Models\obj\Debug\netcoreapp3.1\BlogProject_5175_06062022.Models.pdb
