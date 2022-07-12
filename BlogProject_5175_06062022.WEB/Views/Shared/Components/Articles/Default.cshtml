@@ -1,0 +1,36 @@
+﻿@model List<GetArticleWithUserVM>
+
+<p> <i class="fas fa-newspaper"></i> Son Eklenen Makaleler</p>
+<div class="row">
+    @foreach (var item in Model)
+    {
+
+        <div class="col-md-4">
+            <div class="card" style="box-shadow: 0 0 0; border: 0;">
+                <div class="card-body" style="padding:11px;">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="profile" style="margin-bottom:10px;">
+                                <a style="color: inherit;" asp-action="Profile" asp-controller="User" asp-route-id="@item.UserId">
+                                    <img src="@item.UserArticleImage" style="width: 20px; border-radius: 50%;" alt="Alternate Text" /> &nbsp;@item.UserFullName
+                                </a>
+                            </div>
+                            <a style="text-decoration: none; color: inherit;" asp-action="Details" asp-controller="Articles" asp-route-id="@item.ArticleId">
+                                <h6 class="lead" style="font-size: 13px; font-weight: 500;"><b>@item.Title</b></h6>
+                            </a>
+                            <ul class="ml-0 mb-0 fa-ul text-muted">
+                                <li class="small">
+                                    @item.CreatedDate.ToString("dd.MM.yyyy") · @item.ReadTime dk · @foreach (var itemc in item.Categories)
+                                    {
+                                        <span style=" border: 1px solid rgba(230, 230, 230, 1); padding: 3px 7px; border-radius: 5px;">@itemc.Category.Name</span>
+                                    }
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+@*· <span style=" border: 1px solid rgba(230, 230, 230, 1); padding: 3px 7px; border-radius: 5px;">@item.CategoryName</span>*@

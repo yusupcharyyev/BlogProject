@@ -1,0 +1,59 @@
+﻿@model GetArticleDetailsVM
+
+<div class="row" style="margin: 20px; font-size: 12px;">
+    <div class="col-md-9">
+        <div class="post">
+            <div class="user-block">
+                <img class="img-circle" style="width: 50px; height: 50px; margin-top: 2px; margin-right: 8px;" src="@Model.UserImage" alt="">
+                <span class="username" style="font-size:23px;">
+                    @Model.UserName @Model.UserSirname
+                </span>
+                <span class="description">@Model.CreatedDate.ToString("dd.MM.yyyy") · @Model.ReadTime dk</span>
+            </div>
+            <p>
+                <strong style="font-size:30px;">@Model.Title</strong>
+            </p>
+            <p>
+                <img src="@Model.Image" style="width: 100%; height: 400px;" alt="Alternate Text" />
+            </p>
+
+            <p style="font-size:24px;">
+                @Model.Content
+            </p>
+
+            <p style="font-size:22px; float:left;">
+                <i class="fa-solid fa-eye"></i> @Model.ReadCount
+            </p>
+            <p style="font-size:16px; float:right;">
+                <i class="fas fa-comment"></i> @Model.CommentCount
+                <i class="far fa-thumbs-up mr-1" style="margin-left:15px;"></i> @Model.LikeCount
+            </p>
+        </div>
+    </div>
+    <div style=" border-left: 1px solid #dee2e6; height: 91%; position: absolute; left: 70%;margin-top: -20px;"></div>
+    <div class="col-md-3" style="padding:0px;">
+        <div class="card-outline">
+            <div class="card-body box-profile" style="padding-bottom:0px;">
+                <div class="text-center">
+                    <img class="img-fluid img-circle" style="width:75%;height:auto;" src="@Model.UserArticleImage" alt="User profile picture">
+                </div>
+
+                <h3 class="profile-username text-center">@Model.UserName @Model.UserSirname</h3>
+
+                <p class="text-muted text-center">@Model.UserFullName</p>
+
+                <ul class="list-group list-group-unbordered mb-3">
+                    <li class="list-group-item">
+                        <b>Kategori</b> @foreach (var itemc in Model.Categories)
+                        {
+                            <a class="float-right">@itemc.Category.Name</a>
+                        }
+                    </li>
+                </ul>
+            </div>
+            <div class="card-body box-profile" style="padding-top:0px;">
+                @await Component.InvokeAsync("GetAllCategories")
+            </div>
+        </div>
+    </div>
+</div>

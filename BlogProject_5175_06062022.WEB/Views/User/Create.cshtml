@@ -1,0 +1,65 @@
+﻿
+@model CreateUserDTO
+
+<div class="container" style="margin-bottom:60px;">
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="card card-primary" style="left: 50%;">
+                <div class="card-header">
+                    <h3 class="card-title">Kayıt Paneli</h3>
+                </div>
+
+                <form asp-action="Create" method="post" enctype="multipart/form-data">
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label asp-for="FirstName">Adı</label>
+                            <input type="text" class="form-control" asp-for="FirstName" placeholder="Adınızı Giriniz">
+                            <span asp-validation-for="FirstName" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="LastName">Soyadız</label>
+                            <input type="text" class="form-control" asp-for="LastName" placeholder="Soyadınızı Giriniz">
+                            <span asp-validation-for="LastName" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="UserName">Kullanıcı Adı</label>
+                            <input type="text" class="form-control" asp-for="UserName" placeholder="KullanıcıAdı Giriniz">
+                            <span asp-validation-for="UserName" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Mail">Email</label>
+                            <input type="email" class="form-control" asp-for="Mail" placeholder="Email Giriniz">
+                            <span asp-validation-for="Mail" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Password">Şifre</label>
+                            <input type="password" class="form-control" asp-for="Password" placeholder="Şifrenizi Giriniz">
+                            <span asp-validation-for="Password" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="ImagePath">Fotoğraf Yükle</label>
+                            <input type="file" class="form-control" asp-for="ImagePath" placeholder="Fotoğraf Seç">
+                            <span asp-validation-for="Image" class="text-danger"></span>
+                        </div>
+                        @try
+                        {
+                            @if (!ViewData.ModelState.IsValid && ViewData.ModelState["Warning"].Errors.Count > 0)
+                            {
+                                <div class="alert alert-danger">@ViewData.ModelState["Warning"].Errors.First().ErrorMessage</div>
+                            }
+                        }
+                        catch (Exception)
+                        {
+                            <div class="alert alert-danger">Lütfen gerekli alanları doldurunuz</div>
+                        }
+                    </div>
+
+
+                    <div class="card-footer">
+                        <button type="submit" class="btn btn-primary">Kayıt Ol</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

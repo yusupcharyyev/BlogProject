@@ -1,0 +1,14 @@
+﻿@model List<Category>
+<div style="position: sticky; top: 62px;">
+    <p>DAHA FAZLA KEŞFEDİN</p>
+    <div class="btn-group">
+        <ul class="fc-color-picker" id="color-chooser">
+                @foreach (var item in Model)
+                {
+                    <li><a style="font-size: 13px; border: 1px solid rgba(230, 230, 230, 1); padding: 5px; margin-right: 10px; text-decoration: none;" class="text-muted" asp-action="FilterCategory" asp-controller="CategoryFilter" asp-route-id="@item.ID">@item.Name</a></li>
+                    <!--burada ayarlama yapılırsa bu kategori seçilerek yazılmış güncel 5 makale seçebilir-->
+                }
+        </ul>
+    </div>
+    <hr />
+</div>
