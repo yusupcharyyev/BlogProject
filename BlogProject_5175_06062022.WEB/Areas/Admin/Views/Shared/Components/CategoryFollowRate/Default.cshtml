@@ -1,0 +1,12 @@
+﻿@model List<CategoryFollowRateVM>
+
+@foreach (var item in Model)
+{
+<div class="control" style="margin-bottom:10px;">
+    <small style="font-size: 14px; color: #7c8695;">@item.CategoryName</small>
+    <span style="float: right; font-size: 14px; position: relative; color: #7c8695;">@item.RateCount%</span>
+    <div class="progress" style="height:4px;">
+        <div class="progress-bar" role="progressbar" style="width: @item.RateCount.ToString()%" aria-valuenow="@item.RateCount" aria-valuemin="0" aria-valuemax="100"></div>
+    </div>
+</div>
+}

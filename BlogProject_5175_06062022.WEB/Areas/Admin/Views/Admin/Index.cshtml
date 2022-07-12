@@ -1,0 +1,163 @@
+﻿@model List<AdminLastArticlesVM>
+
+<nav aria-label="breadcrumb" role="navigation">
+    <ol class="breadcrumb adminx-page-breadcrumb">
+        <li class="breadcrumb-item"><a href="#">Admin</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Admin</li>
+    </ol>
+</nav>
+@{
+    int TotalCategory = 0;
+    int TotalComment = 0;
+    int TotalArticle = 0;
+    int TotalUser = 0;
+    foreach (var item in Model)
+    {
+         TotalCategory = item.TotalCategory;
+         TotalComment = item.TotalComment;
+         TotalArticle = item.TotalArticle;
+         TotalUser = item.TotalUser;
+    }
+}
+
+<div class="row">
+    <div class="col-md-6 col-lg-3 d-flex">
+        <div class="card border-0 bg-secondary text-white text-center mb-grid w-100">
+            <div class="d-flex flex-row align-items-center h-100">
+                <div class="card-icon d-flex align-items-center h-100 justify-content-center">
+                    <i data-feather="align-justify"></i>
+                </div>
+                <div class="card-body">
+                    <div class="card-info-title">Toplam Kategori</div>
+                    <h3 class="card-title mb-0">
+                        @TotalCategory
+                    </h3>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6 col-lg-3 d-flex">
+        <div class="card border-0 bg-warning text-white text-center mb-grid w-100">
+            <div class="d-flex flex-row align-items-center h-100">
+                <div class="card-icon d-flex align-items-center h-100 justify-content-center">
+                    <i class="fas fa-comments"></i>
+                </div>
+                <div class="card-body">
+                    <div class="card-info-title">Toplam Yorum</div>
+                    <h3 class="card-title mb-0">
+                        @TotalComment
+                    </h3>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6 col-lg-3 d-flex">
+        <div class="card border-0 bg-primary text-white text-center mb-grid w-100">
+            <div class="d-flex flex-row align-items-center h-100">
+                <div class="card-icon d-flex align-items-center h-100 justify-content-center">
+                    <i class="fas fa-newspaper"></i>
+                </div>
+                <div class="card-body">
+                    <div class="card-info-title">Yayımlanan Makale</div>
+                    <h3 class="card-title mb-0">
+                        @TotalArticle
+                    </h3>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6 col-lg-3 d-flex">
+        <div class="card border-0 bg-success text-white text-center mb-grid w-100">
+            <div class="d-flex flex-row align-items-center h-100">
+                <div class="card-icon d-flex align-items-center h-100 justify-content-center">
+                    <i data-feather="users"></i>
+                </div>
+                <div class="card-body">
+                    <div class="card-info-title">Toplam Üye</div>
+                    <h3 class="card-title mb-0">
+                        @TotalUser
+                    </h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-8">
+        <div class="card">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <div class="card-header-title">Son Eklenen Makaleler</div>
+
+                <nav class="card-header-actions">
+                    <a class="card-header-action" data-toggle="collapse" href="#card1" aria-expanded="false" aria-controls="card1">
+                        <i data-feather="minus-circle"></i>
+                    </a>
+                </nav>
+            </div>
+            <div class="card-body collapse show" id="card1">
+                @foreach (var items in Model)
+                {
+
+                    <div class="sl-item" style="margin-top: 8px;display: -webkit-box;display: -ms-flexbox;display: flex;">
+                        <div class="sl-left" style="z-index: 1;margin-right: 15px;">
+                            <img src="@items.UserImage" alt="user" class="img-circle" style="max-width: 40px;border-radius: 100%;">
+                        </div>
+                        <div class="sl-right">
+                            <a href="#" class="link" style="font-size: 16px;font-weight: 300;color: #455a64;">@items.UserFullName</a>
+                            <span class="sl-date" style="font-size: 12px;color: #99abb4;">@items.CreateDate</span>
+                            @if (items.Statu == BlogProject_5175_06062022.Models.Enums.Statu.Active || items.Statu == BlogProject_5175_06062022.Models.Enums.Statu.Modified)
+                            {
+                                <span style="position:relative;float:right;" class="badge badge-success">Active</span>
+                            }
+                            else if (items.Statu == BlogProject_5175_06062022.Models.Enums.Statu.Passive)
+                            {
+                                <span style="position:relative;float:right;" class="badge badge-danger">Passive</span>
+                            }
+                            <div class="mt-3 row" style="margin-top: 1rem!important;">
+                                <div class="col-md-3 col-xs-12">
+                                    <img src="@items.Image" alt="user" class="img-responsive w-100 radius" style="border-radius: 2px; height: 118px; box-shadow: 0px 0px 4px">
+                                </div>
+                                <div class="col-md-9 col-xs-12" style="padding-left:0px;">
+                                    <a asp-action="EditArticle" asp-controller="Articles" asp-route-id="@items.ID">
+                                        <span style="font-weight: 500;color: #67757c;font-size: 16px;margin-top: 0;margin-bottom: 1rem;">
+                                            @items.Title
+                                        </span>
+                                    </a>
+                                    <p style="font-weight: 300;color: #67757c;font-size: 16px;margin-top: 0;margin-bottom: 1rem;">
+                                        @items.Content.Substring(0, 146) ...
+                                    </p>
+                                    <a asp-action="EditArticle" asp-controller="Articles" asp-route-id="@items.ID" class="text-warning" style="float:right;">
+                                        Düzenle/Değiştir
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="like-comm mt-2" style="float:right;">
+                                <span class="link me-2" style="font-size: 16px;font-weight: 300;color: #455a64; margin-right:5px;"><i class="fa fa-comments"></i> @items.CommentCount</span>
+                                <span class="link me-2" style="font-size: 16px;font-weight: 300;color: #455a64;"><i class="fas fa-thumbs-up"></i> @items.LikeCount</span>
+                            </div>
+                        </div>
+                    </div>
+                    <hr />
+                }
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <div class="card">
+            <div class="card-header">
+                Kategori/Takip
+                <span style="font-weight: 500; padding: 0; margin: 0; float: right; font-size: 15px; color: #7c8695;">@TotalUser Üye</span>
+            </div>
+            <div class="card-body">
+                @await Component.InvokeAsync("CategoryFollowRate")
+            </div>
+        </div>
+        <br />
+
+        @await Component.InvokeAsync("LastAddCategory")
+    </div>
+</div>
+

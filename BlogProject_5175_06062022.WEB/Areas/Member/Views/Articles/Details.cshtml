@@ -1,0 +1,111 @@
+﻿@model GetArticleDetailsVM
+
+<form asp-action="AddComment" method="post">
+    <div class="row" style="margin: 20px; font-size: 12px;">
+        <div class="col-md-9">
+            <div class="post" style="border-bottom:none;">
+                <div class="user-block">
+                    <img class="img-circle" style="width: 50px; height: 50px; margin-top: 2px; margin-right: 8px;" src="@Model.UserImage" alt="">
+                    <span class="username" style="font-size:23px;">
+                        @Model.UserName @Model.UserSirname
+                    </span>
+                    <span class="description">@Model.CreatedDate.ToString("dd.MM.yyyy") · @Model.ReadTime dk</span>
+                </div>
+                <p>
+                    <strong style="font-size:30px;">@Model.Title</strong>
+                </p>
+                <p>
+                    <img src="@Model.Image" style="width: 100%; height: 400px;" alt="Alternate Text" />
+                </p>
+
+                <p style="font-size:18px;">
+                    @Model.Content
+                </p>
+
+                <p style="font-size:22px; float:left;">
+                    <i class="fa-solid fa-eye"></i> @Model.ReadCount
+                </p>
+                <p style="font-size:22px; float:right;">
+                    <i class="fas fa-comment"></i> @Model.CommentCount
+                    @if (Model.likes.Count > 0)
+                    {
+                        <a asp-action="LikeDisLike" asp-controller="Articles" asp-route-id="@Model.ID" style="color: currentcolor;"><i class="fa-solid fa-thumbs-up mr-1" style="margin-left:15px;"></i></a>@Model.LikeCount
+                    }
+                    else
+                    {
+                        <a asp-action="LikeDisLike" asp-controller="Articles" asp-route-id="@Model.ID" style="color: currentcolor;"><i class="far fa-thumbs-up mr-1" style="margin-left:15px;"></i></a>@Model.LikeCount
+                    }
+                </p>
+            </div>
+            <input type="hidden" asp-for="ID" />
+            <div class="bootstrap snippets bootdeys">
+                <div class="comment-wrapper">
+                    <div class="panel panel-info">
+                        <div class="panel-body">
+                            <textarea class="form-control" asp-for="comment" placeholder="Yorumunuzu Ekleyin" rows="3"></textarea>
+                            <br>
+                            <button type="submit" asp-action="AddComment" asp-controller="Articles" class="btn btn-info" style="float: right; padding: 6px 42px;">Ekle</button>
+
+                            <div class="clearfix"></div>
+                            <hr>
+                            @foreach (var item in Model.comments)
+                            {
+                                if (item.Statu != BlogProject_5175_06062022.Models.Enums.Statu.Passive)
+                                {
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <p style="font-size:14px;">@item.Text</p>
+
+                                            <div class="d-flex justify-content-between">
+                                                <div class="d-flex flex-row align-items-center">
+                                                    <img src="@item.AppUser.Image" alt="avatar" style="width:40px;height:40px;" />
+                                                    <p class="mb-0" style="font-size: 16px; margin-left: 10px;">@item.AppUser.UserName</p>
+                                                </div>
+                                                <div class="d-flex flex-row align-items-center">
+                                                    <i class="fas fa-clock mx-2 text-black" style=""></i>
+                                                    <p class="text-muted mb-0">@item.CreateDate.ToString("dd.MM.yyyy")</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!---<div style=" border-left: 1px solid #dee2e6; height: 91%; position: absolute; left: 70%;margin-top: -20px;"></div>-->
+        <div class="col-md-3" style="padding:0px;">
+            <div class="card-outline">
+                <div class="card-body box-profile" style="padding-bottom:0px;">
+                    <div class="text-center">
+                        <img class="img-fluid img-circle" style="width:75%;height:auto;" src="@Model.UserArticleImage" alt="User profile picture">
+                    </div>
+
+                    <h3 class="profile-username text-center">@Model.UserName @Model.UserSirname</h3>
+
+                    <p class="text-muted text-center">@Model.UserFullName</p>
+
+                    <ul class="list-group list-group-unbordered mb-3">
+                        <li class="list-group-item" style="background:none;">
+                            <b style="top: 6px; position: relative;">Kategori</b> @foreach (var itemt in Model.Categories)
+                            {
+                                <a class="float-right" style="font-size: 13px; border: 1px solid rgba(230, 230, 230, 1); padding: 5px;text-decoration: none;">@itemt.Category.Name</a>
+                            }
+                        </li>
+                    </ul>
+                </div>
+                <div class="card-body box-profile" style="padding-top:0px;">
+                    @await Component.InvokeAsync("GetAllCategories")
+                    <div class="buttonsGroup">
+                        <a style="font-size: 16px; margin-right: 10px; color: #6c757d;" asp-area="Member" asp-controller="User" asp-action="About">Hakkımızda</a>
+                        <a style="font-size: 16px; margin-right: 10px; color: #6c757d;" asp-area="Member" asp-controller="User" asp-action="About">KVK Kanunu</a>
+                        <a style="font-size: 16px; margin-right: 10px; color: #6c757d;" asp-area="Member" asp-controller="User" asp-action="About">Yardım</a>
+                        <a style="font-size: 16px; margin-right: 10px; color: #6c757d;" asp-area="Member" asp-controller="User" asp-action="About">Kariyer</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

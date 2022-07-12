@@ -1,0 +1,239 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BlogProject Admin Panel</title>
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="~/admin/dist/css/adminx.css" media="screen" />
+
+
+</head>
+<body class="sidebar-mini" style="height: auto;">
+
+    <div class="adminx-container">
+        <nav class="navbar navbar-expand justify-content-between fixed-top">
+            <a class="navbar-brand mb-0 h1 d-none d-md-block" asp-action="Index" asp-controller="Admin">
+                <img src="~/images/userImg/blogproject.jpg" class="navbar-brand-image d-inline-block align-top mr-2" alt="">
+                Admin Panel
+            </a>
+
+            <form class="form-inline form-quicksearch d-none d-md-block mx-auto">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <div class="input-group-icon">
+                            <i data-feather="search"></i>
+                        </div>
+                    </div>
+                    <input type="text" class="form-control" id="search" placeholder="Ara...">
+                </div>
+            </form>
+
+            <div class="d-flex flex-1 d-block d-md-none">
+                <a href="#" class="sidebar-toggle ml-3">
+                    <i data-feather="menu"></i>
+                </a>
+            </div>
+
+            <ul class="navbar-nav d-flex justify-content-end mr-2">
+                <li class="nav-item dropdown">
+                    <a class="nav-link avatar-with-name" id="navbarDropdownMenuLink" data-toggle="dropdown" href="#">
+                        <img src="~/images/userImg/yusupcharyyevv.jpg" class="d-inline-block align-top" alt="">
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item text-danger" asp-action="LogOut" asp-controller="Admin">Çıkış Yap</a>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+        <div class="adminx-sidebar expand-hover push">
+            <ul class="sidebar-nav">
+                <li class="sidebar-nav-item">
+                    <a asp-action="Index" asp-controller="Admin" class="sidebar-nav-link active">
+                        <span class="sidebar-nav-icon">
+                            <i data-feather="home"></i>
+                        </span>
+                        <span class="sidebar-nav-name">
+                            Anasayfa
+                        </span>
+                        <span class="sidebar-nav-end">
+
+                        </span>
+                    </a>
+                </li>
+
+                <li class="sidebar-nav-item">
+                    <a class="sidebar-nav-link collapsed" data-toggle="collapse" href="#example" aria-expanded="false" aria-controls="example">
+                        <span class="sidebar-nav-icon">
+                            <i class="fas fa-newspaper"></i>
+                        </span>
+                        <span class="sidebar-nav-name">
+                            Makaleler
+                        </span>
+                        <span class="sidebar-nav-end">
+                            <i data-feather="chevron-right" class="nav-collapse-icon"></i>
+                        </span>
+                    </a>
+
+                    <ul class="sidebar-sub-nav collapse" id="example">
+                        <li class="sidebar-nav-item">
+                            <a asp-action="ArticlePending" asp-controller="Articles" class="sidebar-nav-link">
+                                <span class="sidebar-nav-abbr">
+                                    OB
+                                </span>
+                                <span class="sidebar-nav-name">
+                                    Onay Bekleyen Makaleler
+                                </span>
+                            </a>
+                        </li>
+
+                        <li class="sidebar-nav-item">
+                            <a asp-controller="Articles" asp-action="AllArticles" class="sidebar-nav-link">
+                                <span class="sidebar-nav-abbr">
+                                    TM
+                                </span>
+                                <span class="sidebar-nav-name">
+                                    Tüm Makaleler
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="sidebar-nav-item">
+                    <a class="sidebar-nav-link collapsed" data-toggle="collapse" href="#navTables" aria-expanded="false" aria-controls="navTables">
+                        <span class="sidebar-nav-icon">
+                            <i data-feather="align-justify"></i>
+                        </span>
+                        <span class="sidebar-nav-name">
+                            Kategoriler
+                        </span>
+                        <span class="sidebar-nav-end">
+                            <i data-feather="chevron-right" class="nav-collapse-icon"></i>
+                        </span>
+                    </a>
+
+                    <ul class="sidebar-sub-nav collapse" id="navTables">
+                        <li class="sidebar-nav-item">
+                            <a asp-action="CategoryPending" asp-controller="Category" class="sidebar-nav-link">
+                                <span class="sidebar-nav-abbr">
+                                    OB
+                                </span>
+                                <span class="sidebar-nav-name">
+                                    Onay Bekleyen Kategoriler
+                                </span>
+                            </a>
+                        </li>
+
+                        <li class="sidebar-nav-item">
+                            <a asp-action="AllCategory" asp-controller="Category" class="sidebar-nav-link">
+                                <span class="sidebar-nav-abbr">
+                                    TK
+                                </span>
+                                <span class="sidebar-nav-name">
+                                    Tüm Kategoriler
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="sidebar-nav-item">
+                    <a class="sidebar-nav-link collapsed" data-toggle="collapse" href="#navForms" aria-expanded="false" aria-controls="navForms">
+                        <span class="sidebar-nav-icon">
+                            <i data-feather="edit"></i>
+                        </span>
+                        <span class="sidebar-nav-name">
+                            Üyeler
+                        </span>
+                        <span class="sidebar-nav-end">
+                            <i data-feather="chevron-right" class="nav-collapse-icon"></i>
+                        </span>
+                    </a>
+
+                    <ul class="sidebar-sub-nav collapse" id="navForms">
+                        <li class="sidebar-nav-item">
+                            <a asp-action="UserPending" asp-controller="User" class="sidebar-nav-link">
+                                <span class="sidebar-nav-abbr">
+                                    OB
+                                </span>
+                                <span class="sidebar-nav-name">
+                                    Onay Bekleyen Üyeler
+                                </span>
+                            </a>
+                        </li>
+
+                        <li class="sidebar-nav-item">
+                            <a asp-action="AllUser" asp-controller="User" class="sidebar-nav-link">
+                                <span class="sidebar-nav-abbr">
+                                    TK
+                                </span>
+                                <span class="sidebar-nav-name">
+                                    Tüm Kullanıcılar
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="sidebar-nav-item">
+                    <a class="sidebar-nav-link collapsed" data-toggle="collapse" href="#navComment" aria-expanded="false" aria-controls="navForms">
+                        <span class="sidebar-nav-icon">
+                            <i class="fa fa-comments" aria-hidden="true"></i>
+                        </span>
+                        <span class="sidebar-nav-name">
+                            Yorumlar
+                        </span>
+                        <span class="sidebar-nav-end">
+                            <i data-feather="chevron-right" class="nav-collapse-icon"></i>
+                        </span>
+                    </a>
+
+                    <ul class="sidebar-sub-nav collapse" id="navComment">
+                        <li class="sidebar-nav-item">
+                            <a asp-action="CommentPending" asp-controller="Comment" class="sidebar-nav-link">
+                                <span class="sidebar-nav-abbr">
+                                    OY
+                                </span>
+                                <span class="sidebar-nav-name">
+                                    Onay Bekleyen Yorumlar
+                                </span>
+                            </a>
+                        </li>
+
+                        <li class="sidebar-nav-item">
+                            <a asp-action="AllComment" asp-controller="Comment" class="sidebar-nav-link">
+                                <span class="sidebar-nav-abbr">
+                                    TY
+                                </span>
+                                <span class="sidebar-nav-name">
+                                    Tüm Yorumlar
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div class="adminx-content">
+            <div class="adminx-main-content">
+                <div class="container-fluid">
+                    @RenderBody()
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="~/admin/dist/js/vendor.js"></script>
+    <script src="~/admin/dist/js/adminx.js"></script>
+
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

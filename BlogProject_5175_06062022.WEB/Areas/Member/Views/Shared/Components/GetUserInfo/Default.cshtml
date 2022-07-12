@@ -1,0 +1,8 @@
+﻿@model AppUser
+
+<div class="image">
+    <img src="@Model.Image" class="img-circle elevation-2" alt="User Image">
+</div>
+<div class="info">
+    <a asp-action="Index" asp-controller="AppUser" class="d-block">@Model.FullName</a>
+</div>

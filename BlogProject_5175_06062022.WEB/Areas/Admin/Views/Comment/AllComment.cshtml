@@ -1,0 +1,50 @@
+﻿@model List<GetAllCommentParentVM>
+
+
+<div class="row">
+
+    <div class="col-lg-8">
+        @foreach (var itemO in Model)
+        {
+            <div class="card" style="margin-bottom:10px;">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <div class="card-header-title">
+                        <div class="sl-left">
+                            <img src="@itemO.UserImage" alt="user" class="img-circle" style="max-width: 35px;border-radius: 100%;">
+                            <a href="#" class="link" style="font-size: 14px; font-weight: 300; color: #455a64; position: relative; top: 3px;">@itemO.UserFullName</a>
+                        </div>
+                    </div>
+                    <nav class="card-header-actions">
+                        <a class="card-header-action" data-toggle="collapse" href="#@itemO.UserName" aria-expanded="false" aria-controls="@itemO.UserName">
+                            <i data-feather="minus-circle"></i>
+                        </a>
+                    </nav>
+                </div>
+                <div class="card-body collapse show" id="@itemO.UserName">
+                    @foreach (var items in itemO.getAllCommentChild)
+                    {
+                        <div class="sl-item">
+                            <div class="sl-right">
+                                <span class="badge badge-secondary">@items.CreateDate.ToString("dd.MM.yyyy")</span>
+                                @if (items.Statu == BlogProject_5175_06062022.Models.Enums.Statu.Active || items.Statu == BlogProject_5175_06062022.Models.Enums.Statu.Modified)
+                                {
+                                    <a asp-action="CommentPassive" asp-controller="Comment" asp-route-id="@items.ID" style="position: relative; float: right; color: white; padding: 8px; margin-left: 5px; border-radius: 0;" class="badge badge-danger">Passive Çek</a>
+                                    <span class="badge badge-success">Active</span>
+                                }
+                                <a class="badge badge-primary" asp-action="EditArticle" asp-controller="Articles" asp-route-id="@items.ArticleID">Article Git</a>
+                                <div class="row" style="margin-left: 5px;">
+                                    <div class="col-md-9 col-xs-12" style="padding-left:0px;">
+                                        <p style="font-weight: 300;color: #67757c;font-size: 16px;margin-top: 0;margin-bottom: 1rem;">
+                                            @items.Text
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <hr />
+                    }
+                </div>
+            </div>
+        }
+    </div>
+</div>

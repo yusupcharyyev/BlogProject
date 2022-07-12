@@ -1,0 +1,115 @@
+﻿
+@model GetArticleDetailsVM
+
+<div class="row">
+    <div class="col-md-9">
+        @if (TempData["Pasive"] != null)
+        {
+            <div class="alert alert-success">@TempData["Pasive"]</div>
+        }
+        <div class="post" style="border-bottom:none;">
+            <div class="user-block">
+                <img class="img-circle" style="width: 50px; border-radius: 50%; height: 50px; margin-top: 2px; margin-right: 8px;" src="@Model.UserImage" alt="">
+                <span class="username" style="font-size:23px;position:relative;top:6px;">
+                    @Model.UserName @Model.UserSirname
+                </span>
+                <span class="description" style="font-size: 14px; position: relative; top: 6px;">@Model.CreatedDate.ToString("dd.MM.yyyy") · @Model.ReadTime dk</span>
+                @if (Model.Statu == BlogProject_5175_06062022.Models.Enums.Statu.Active || Model.Statu == BlogProject_5175_06062022.Models.Enums.Statu.Modified)
+                {
+                    <span><a asp-action="PassiveArticle" asp-controller="Articles" asp-route-id="@Model.ID" class="btn btn-danger" style="float: right; position: relative; top: 6px;">Pasife Çek</a></span>
+                }
+                else
+                {
+                    <span><a asp-action="ActiveArticle" asp-controller="Articles" asp-route-id="@Model.ID" class="btn btn-success" style="float: right; position: relative; top: 6px;">Aktife Çek</a></span>
+                }
+            </div>
+            <p>
+                <strong style="font-size:30px;">@Model.Title</strong>
+            </p>
+            <p>
+                <img src="@Model.Image" style="width: 100%; height: 400px;" alt="Alternate Text" />
+            </p>
+
+            <p style="font-size:18px;">
+                @Model.Content
+            </p>
+
+            <p style="font-size:22px; float:left;">
+                <i class="fa-solid fa-eye"></i> @Model.ReadCount
+            </p>
+            <p style="font-size:22px; float:right;">
+                <i class="fas fa-comment"></i> @Model.CommentCount
+                @if (Model.likes.Count > 0)
+                {
+                    <i class="fa-solid fa-thumbs-up mr-1" style="margin-left:15px;"></i>@Model.LikeCount
+                }
+                else
+                {
+                    <i class="far fa-thumbs-up mr-1" style="margin-left:15px;"></i>@Model.LikeCount
+                }
+            </p>
+        </div>
+        <input type="hidden" asp-for="ID" />
+        <div class="bootstrap snippets bootdeys">
+            <div class="comment-wrapper">
+                <div class="panel panel-info">
+                    <div class="panel-body">
+                        <div class="clearfix"></div>
+                        <hr>
+                        @foreach (var item in Model.comments)
+                        {
+                            <div class="card" style="margin-bottom:10px;">
+                                <div class="card-body">
+                                    <span style="font-size: 14px; position: relative; bottom: 8px;">
+                                        @item.Text
+                                    @if (item.Statu == BlogProject_5175_06062022.Models.Enums.Statu.Active || item.Statu == BlogProject_5175_06062022.Models.Enums.Statu.Modified)
+                                    {
+                                        <a asp-action="PassiveComment" asp-controller="Articles" asp-route-id="@item.ID" asp-route-articleid="@Model.ID" class="text-danger" style="float: right;">Pasife Çek</a>
+                                    }
+                                    else
+                                    {
+                                        <a asp-action="ActiveComment" asp-controller="Articles" asp-route-id="@item.ID" asp-route-articleid="@Model.ID" class="text-success" style="float: right;">Aktife Çek</a>
+                                    }
+                                </span>
+
+                                <div class="d-flex justify-content-between">
+                                    <div class="d-flex flex-row align-items-center">
+                                        <img src="@item.AppUser.Image" alt="avatar" style="width:40px;height:40px;" />
+                                        <p class="mb-0" style="font-size: 16px; margin-left: 10px;">@item.AppUser.UserName</p>
+                                    </div>
+                                    <div class="d-flex flex-row align-items-center">
+                                        <i class="fas fa-clock mx-2 text-black"></i>
+                                        <p class="text-muted mb-0">@item.CreateDate.ToString("dd.MM.yyyy")</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3" style="padding:0px;">
+        <div class="card" style="border: 1px solid #d7dfe3; border-radius: 4px; box-shadow: 0px 5px 20px rgb(0 0 0 / 5%); color: #455a64;">
+            <img class="card-img-top" src="~/images/profile-bg.jpg" alt="Card image cap">
+            <div class="card-body little-profile text-center" style="padding:17px;">
+                <div class="pro-img" style="margin-top: -80px; margin-bottom: 20px;">
+                    <img src="@Model.UserImage" style="width: 128px; height: 128px; box-shadow: 0 0 15px rgb(0 0 0 / 20%); border-radius: 100%;" alt="user">
+                </div>
+                <h3 style="font-weight: 400; line-height: 30px;" class="mb-0">@Model.UserName @Model.UserSirname</h3>
+                <p style="font-size: 16px; line-height: 24px; font-weight: 300; color: #67757c;">@Model.UserFullName</p>
+                <div class="row text-center mt-3">
+                    <div class="col-md-6 mt-3">
+                        <h3 style="font-weight: 400; line-height: 30px;" class="mb-0 font-light">@Model.UserArticleCount</h3>
+                        <small style="font-size: 13px; font-weight: 400;">Makale</small>
+                    </div>
+                    <div class="col-md-6 mt-3">
+                        <h3 style="font-weight: 400; line-height: 30px;" class="mb-0 font-light">@Model.UserFollowCount</h3>
+                        <small style="font-size: 13px; font-weight: 400;">Kategori/Takip</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

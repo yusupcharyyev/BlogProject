@@ -1,0 +1,32 @@
+﻿@model List<GetCategoryPendingDTO>
+
+
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">Onay Bekleyen Kategoriler</h3>
+    </div>
+
+    <div class="card-body p-0">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Kategori Adı</th>
+                    <th>Kategori Açıklaması</th>
+                    <th>Oluşturulma Tarihi</th>
+                    <th>Durumu</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.Name</td>
+                        <td>@item.Description</td>
+                        <td>@item.CreateDate</td>
+                        <td><a asp-action="CategoryStatuMA" asp-controller="Category" asp-route-id="@item.ID" class="btn btn-success" style="padding: 2px 11px; border-radius: 0;">Active Çek</a></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,46 @@
+﻿@model List<GetAllCategoryDTO>
+
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">Kategoriler</h3>
+    </div>
+
+    <div class="card-body p-0">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Kategori Adı</th>
+                    <th>Kategori Açıklaması</th>
+                    <th>Durumu</th>
+                    <th>Active/Passive</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                <tr>
+                    <td>@item.Name</td>
+                    <td>@item.Description</td>
+                    @if (item.Statu == BlogProject_5175_06062022.Models.Enums.Statu.Active || item.Statu == BlogProject_5175_06062022.Models.Enums.Statu.Modified)
+                    {
+                        <td><span class="badge badge-success">Active</span></td>
+                    }
+                    else if (item.Statu == BlogProject_5175_06062022.Models.Enums.Statu.Passive)
+                    {
+                        <td><span class="badge badge-danger">@item.Statu</span></td>
+                    }
+
+                    @if (item.Statu == BlogProject_5175_06062022.Models.Enums.Statu.Active || item.Statu == BlogProject_5175_06062022.Models.Enums.Statu.Modified)
+                    {
+                        <td><a asp-action="CategoryStatuP" asp-controller="Category" asp-route-id="@item.ID" class="btn btn-danger" style="padding: 2px 11px; border-radius: 0;">Pasife Çek</a></td>
+                    }
+                    else if (item.Statu == BlogProject_5175_06062022.Models.Enums.Statu.Passive)
+                    {
+                        <td><a asp-action="CategoryStatuMA" asp-controller="Category" asp-route-id="@item.ID" class="btn btn-success" style="padding: 2px 11px; border-radius: 0;">Active Çek</a></td>
+                    }
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

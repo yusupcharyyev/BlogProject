@@ -1,0 +1,24 @@
+﻿@model List<Category>
+
+
+<div class="card">
+    <div class="card-header">
+        Son Eklenen Kategoriler
+    </div>
+    <div class="card-body">
+        @foreach (var item in Model)
+        {
+            <div class="ControlHeigt" style="margin-bottom:9px;">
+                <small style="font-size: 16px; color: #7c8695;">@item.Name</small>
+                @if (item.Statu == BlogProject_5175_06062022.Models.Enums.Statu.Active || item.Statu == BlogProject_5175_06062022.Models.Enums.Statu.Modified)
+                {
+                <span style="position:relative;float:right;" class="badge badge-success">Active</span>
+                }
+                else if (item.Statu == BlogProject_5175_06062022.Models.Enums.Statu.Passive)
+                {
+                <span style="position:relative;float:right;" class="badge badge-danger">Passive</span>
+                }
+            </div>
+        }
+    </div>
+</div>

@@ -1,0 +1,52 @@
+﻿@model GetProfileVM
+
+<div class="row" style="margin: 20px;">
+    <div class="col-md-9">
+        <p> <i class="fas fa-newspaper"></i> Makaleler</p>
+        @foreach (var item in Model.articles)
+        {
+            <div class="card">
+                <div class="card-body">
+                    <div class="profile">
+                        <a style="text-decoration: none; color: inherit;" asp-action="Details" asp-controller="Articles" asp-route-id="@item.ID">
+                            <h6 class="lead" style="font-size: 20px; font-weight: 500;"><b>@item.Title</b></h6>
+                        </a>
+                        <p class="text-muted text-sm">@item.Content.Substring(0, 100)...</p>
+                        <ul class="ml-0 mb-0 fa-ul text-muted">
+                            <li class="small">@item.CreateDate.ToString("dd.MM.yyyy") </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+    <div style="border-left: 1px solid #dee2e6; height: 89%; position: absolute; left: 79%; margin-top: -36px;"></div>
+    <div class="col-md-3" style="padding:0px;">
+        <div class="card-outline">
+            <div class="card-body box-profile" style="padding-bottom:0px;">
+                <div class="text-center">
+                    <img class="img-fluid img-circle" style="width:75%;height:auto;" src="@Model.Image" alt="User profile picture">
+                </div>
+
+                <h3 class="profile-username text-center">@Model.FirstName @Model.LastName</h3>
+
+                <p class="text-muted text-center">@Model.UserName</p>
+
+                @*<ul class="list-group list-group-unbordered mb-3">
+                        <li class="list-group-item">
+                            <b>Kategori</b> <a class="float-right">@Model.CategoryName</a>
+                        </li>
+                    </ul>*@
+            </div>
+            <div class="card-body box-profile" style="padding-top:0px;">
+
+                <div class="buttonsGroup">
+                    <a style="font-size: 16px; margin-right: 10px; color: #6c757d;" asp-area="Member" asp-controller="User" asp-action="About">Hakkımızda</a>
+                    <a style="font-size: 16px; margin-right: 10px; color: #6c757d;" asp-area="Member" asp-controller="User" asp-action="About">KVK Kanunu</a>
+                    <a style="font-size: 16px; margin-right: 10px; color: #6c757d;" asp-area="Member" asp-controller="User" asp-action="About">Yardım</a>
+                    <a style="font-size: 16px; margin-right: 10px; color: #6c757d;" asp-area="Member" asp-controller="User" asp-action="About">Kariyer</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

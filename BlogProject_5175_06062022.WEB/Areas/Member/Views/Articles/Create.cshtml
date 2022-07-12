@@ -1,0 +1,53 @@
+﻿
+@model CreateArticleDTO
+
+<div class="col-lg-6">
+    <div class="card card-primary" style="position: relative; left: 50%; right: 50%;">
+        <div class="card-header">
+            <h3 class="card-title">Makale Oluşturma Paneli</h3>
+        </div>
+
+        <form asp-action="Create" method="post" enctype="multipart/form-data">
+            <div class="card-body">
+                <div class="form-group">
+                    <label asp-for="Title">Başlık</label>
+                    <input type="text" data-limit-input="50" class="form-control" asp-for="Title" placeholder="Başlık">
+                    <span>0 ile 50 karakter arası giriniz</span>
+                    <span asp-validation-for="Title" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Content">Content</label>
+                    <textarea data-limit-input="1000" class="form-control" asp-for="Content" placeholder="içerik"></textarea>
+                    <span>0 ile 1000 karakter arası giriniz</span>
+                    <span asp-validation-for="Content" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="ImagePath">Fotoğraf Yükle</label>
+                    <input type="file" class="form-control" asp-for="ImagePath" placeholder="Fotoğraf Seç">
+                    <span asp-validation-for="Image" class="text-danger"></span>
+                </div>
+                <input type="hidden" asp-for="AppUserID" />
+                <div class="form-control">
+                    <label asp-for="CategoryID">Kategoriler</label>
+                    <select class="selectpicker" multiple data-live-search="true" asp-for="@Model.CategoryID" asp-items="@(new SelectList(Model.Categories,"ID","Name"))">
+                    </select>
+                </div>
+
+
+            </div>
+
+
+            <div class="card-footer">
+                <button type="submit" class="btn btn-primary">Makale Oluştur</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<style>
+    .bootstrap-select > .dropdown-toggle {
+        top: -6px;
+        background: white;
+        border: 0;
+    }
+</style>

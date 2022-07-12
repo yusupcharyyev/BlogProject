@@ -1,0 +1,25 @@
+﻿@model List<Category>
+
+<div class="card">
+    <div class="card-header" style="padding: 0; background: none;">
+        <p class="card-title" style="margin: 0; padding: 4px; text-align: center; float: revert; font-size: 15px;">Takip Ettiğiniz Kategoriler</p>
+    </div>
+    <div class="card-body">
+        <div class="btn-group">
+            <ul class="fc-color-picker" id="color-chooser">
+                @if (Model.Count > 0)
+                {
+                    @foreach (var item in Model)
+                    {
+                        <li><a style="font-size: 13px; border: 1px solid rgba(230, 230, 230, 1); padding: 5px; margin-right: 10px; text-decoration: none;" class="text-muted" asp-action="FilterCategory" asp-controller="CategoryFilter" asp-route-id="@item.ID">@item.Name</a></li>
+                        <!--burada ayarlama yapılırsa bu kategori seçilerek yazılmış güncel 5 makale seçebilir-->
+                    }
+                }
+                else
+                {
+                    <li style="font-size:15px;">Kategorileri takip etmek için<a class="text-muted" asp-action="List" asp-controller="Category">&nbsp;tıklayınız</a></li>
+                }
+            </ul>
+        </div>
+    </div>
+</div>
